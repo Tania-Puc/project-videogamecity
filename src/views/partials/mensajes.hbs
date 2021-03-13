@@ -1,0 +1,31 @@
+
+{{#if correcto}}
+<div class="container">
+  <div class="alert alert-success  alert-dismissible fade show  " role="alert">
+  <strong>{{correcto}}</strong> 
+ <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+</div>
+</div>
+
+{{/if}}
+
+{{#if error}}
+<div class="container">
+  <div class="alert alert-danger  alert-dismissible fade show  " role="alert">
+  <strong>{{error}}</strong> 
+ <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+</div>
+</div>
+
+{{/if}}
+
+
+{{#if admin}}
+<div class="container">
+  <div class="alert alert-danger  alert-dismissible fade show  " role="alert">
+  <strong>{{admin}}<a href="/signinadmin">Administrador</a></strong>
+ <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+</div>
+</div>
+
+{{/if}}

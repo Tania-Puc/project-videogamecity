@@ -1,0 +1,36 @@
+<div class="container p-4">
+    <div class="row"> 
+        <div class="col-md-5 mx-auto">
+            <div class="card ">
+                    <h4  class="card-title" style="text-align: center;">Agregar</h4>
+
+                <div class="card-body">
+                  <form action="/juegos/add" method="POST">
+
+                    <div class="form-grup">
+                        <input type="text" class="form-control" name="titulo" placeholder="Titulo" autofocus>
+                    </div>
+                    <br>
+                   <div class="form-grup">
+                        <textarea name="descripcion" rows="2" class="form-control" placeholder="Descripción"></textarea>
+                    </div>
+                    <br>
+                    <div class="form-grup">
+                        <input type="url" name="imagen" class="form-control " placeholder="url de imagen">
+
+                    </div>
+
+                    <br>
+           
+                    
+                    <div class="form-grup">
+                    <button class="btn btn-primary btn-sm" style="background-color: #0D255E;"><i class="fas fa-save"></i> Guardar</button>
+                    </div>
+                    <br>
+                    </form>
+                </div>
+            </div>
+
+        </div>       
+    </div>
+</div>
