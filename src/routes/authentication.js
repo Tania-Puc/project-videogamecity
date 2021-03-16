@@ -17,6 +17,7 @@ router.post('/singup', isNotLoggedin,passport.authenticate('local.singup',{ succ
 }));
 
 router.get('/signin',isNotLoggedin,(req,res)=>{
+    
     res.render('auth/signin');
 });
 
@@ -31,7 +32,11 @@ router.post('/signin', isNotLoggedin, (req,res, next)=>{
 
 
 router.get('/profile', isLoggedIn, (req,res)=>{
-    res.render('profile');
+    if(req.user.idtipo==2){res.render('profile');
+}else if(req.user.idtipo==1){
+    res.render('admin');
+}
+
 })
 
 router.get('/logout',(req,res)=>{

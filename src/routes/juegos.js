@@ -12,6 +12,9 @@ const {isLoggedIn}=require('../lib/auth');
 router.get('/add',isLoggedIn,(req, res)=>{
     res.render('juegos/add');
 });
+router.get('/aprobar',isLoggedIn,(req, res)=>{
+    res.render('juegos/aprobar');
+});
 /*AL AGREGAR UN VIDEOJUEGO SE AGREGAR CON EL ESTATUS 2= NO APROBADO PARA POSTERIORMENTE 
 EL ADMINISTRADOR LO APROBARA */
 router.post('/add',isLoggedIn, async (req, res)=>{

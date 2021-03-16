@@ -19,13 +19,13 @@ passport.use("local.signin",
           const user = rows[0];
           const idtipo=user.idtipo;
           const validPassword= await helpers.matchPassword(contrasena, user.contrasena);
-          if(idtipo==2){
+          if(idtipo){
            debugger;
           if (validPassword) {
                 done(null, user, req.flash("correcto", "Bienvenido " + user.nombre));
                 
                } else {
-                done(null, false, req.flash("error", "Contraseña incorrecta"));
+                done(null, false, {message: req.flash("error","contraseña incorrecta", )});
                }
           }else{
             done(null, false, req.flash("admin", "Intente iniciar como: "));

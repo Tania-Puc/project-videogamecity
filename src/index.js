@@ -64,6 +64,7 @@ app.use((req,res,next)=>{
     app.locals.admin=req.flash('admin');
 
     app.locals.user=req.user;
+    
     next();
 });
 
@@ -72,6 +73,8 @@ app.use((req,res,next)=>{
 app.use(require ('./routes'));
 app.use(require ('./routes/authentication'));
 app.use('/juegos',require ('./routes/juegos'));
+app.use('/admin',require('./routes/administrador'));
+
 
 app.use(function (req, res) {
 	res.status(404);
