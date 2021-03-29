@@ -1,11 +1,37 @@
-    {{>navigation}}
-        {{>mensajes}}
+    {{>navigationadmin}}
+    
+
 
 <div class="container p-4">
-      <div class="col-md-4 mx-auto">
-        <img class="img-fluid mx-auto  img-thumbnail" src="https://www.trecebits.com/wp-content/uploads/2019/04/11854.jpg" />
+   <h1>Aprobar juegos</h1>
+    {{>mensajes}}
 
-     </div>
- 
-
+<table class="table table-hover table-dark table-responsive ">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Titulo</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Estatus</th>
+      <th scope="col">Creado </th>
+      <th scope="col">Puntos</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each videojuegos3}}
+    <tr>
+      <th scope="row">{{idjuego}}</th>
+      <td>{{titulo}}</td>
+      <td>{{descripcion}}</td>
+      <td>{{idestatus}}</td>
+      <td>{{timeago create_at}}</td>
+      <td>{{puntos}}</td>
+       <td><a href="/admin/aprobar/{{idjuego}}"  class="btn btn-sm btn-outline-secondary">Aprobar</a><p></p> <a  class="btn btn-sm btn-outline-secondary" href="/admin/deletejuegos/{{idjuego}}">Eliminar</a></td>
+    </tr>
+    {{else}}
+  
+    {{/each}}
+  </tbody>
+</table>
 </div>

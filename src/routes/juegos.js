@@ -29,7 +29,8 @@ router.post('/add',isLoggedIn, async (req, res)=>{
         idestatus,
         idusuario: req.user.idusuario
     };
-    console.log(newjuego);
+    //console.log(newjuego);
+    
     await pool.query('INSERT INTO videojuegos set ?',[newjuego]);
     req.flash('correcto','VIDEOJUEGO AGREGADO CORRECTAMENTE');
 

@@ -75,5 +75,5 @@ passport.deserializeUser(async(idusuario, done)=>{
     const rows=await pool.query('SELECT*FROM usuario where idusuario=?', [idusuario]);
 
     done(null,rows[0]);
-    console.log(rows[0]);
+    //console.log(rows[0]);
 }); 
