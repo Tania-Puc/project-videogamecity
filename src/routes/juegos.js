@@ -20,7 +20,7 @@ EL ADMINISTRADOR LO APROBARA */
 router.post('/add',isLoggedIn, async (req, res)=>{
     //console.log(req.body);
 
-    const{titulo, descripcion, imagen,idestatus=2,puntos=1}=req.body;
+    const{titulo, descripcion, imagen,idestatus=1,puntos=1}=req.body;
     const newjuego={        
         titulo,    
         descripcion,
@@ -29,25 +29,51 @@ router.post('/add',isLoggedIn, async (req, res)=>{
         idestatus,
         idusuario: req.user.idusuario
     };
-    //console.log(newjuego);
+    var titulo1=newjuego.titulo;
+    titulo1 = titulo1.toLowerCase();
+
+    const juegos= await pool.query('select*from videojuegos where titulo=?',[titulo1]);
+    const juegoexis=juegos[0];
+
+    if(juegos.length==1){
+
+    const titulo=juegoexis.titulo;
+   const updatejuego={
+       descripcion:juegoexis.descripcion,
+       puntos:juegoexis.puntos+1,
+       idestatus:juegoexis.idestatus,
+       idusuario:juegoexis.idusuario,
+       idjuego:juegoexis.idjuego
+
+   }
+   await pool.query('update videojuegos set ? where titulo= ?' ,[updatejuego,titulo]);
+
+
+    req.flash('correcto','VIDEOJUEGO ha sido recomendado');
+        res.redirect('/juegos')
+
     
-    await pool.query('INSERT INTO videojuegos set ?',[newjuego]);
-    req.flash('correcto','VIDEOJUEGO AGREGADO CORRECTAMENTE');
+    }else{
+        await pool.query('INSERT INTO videojuegos set ?',[newjuego]);
+        req.flash('correcto','VIDEOJUEGO AGREGADO CORRECTAMENTE');
+        res.redirect('/juegos')
+
+    
+    }
+  
 
 
-
-    res.redirect('/juegos')
 });
 //LISTAR LOS todos los VIDEOJUEGOS AGREGADOS
 router.get('/',isLoggedIn, async(req, res)=>{
-    const videojuegos= await pool.query('SELECT*FROM videojuegos INNER JOIN usuario ON videojuegos.idusuario = usuario.idusuario where usuario.idusuario=?',[req.user.idusuario]);
+    const videojuegos= await pool.query('SELECT*FROM videojuegos INNER JOIN usuario ON videojuegos.idusuario = usuario.idusuario where usuario.idusuario=? and videojuegos.idestatus=2',[req.user.idusuario]);
     //console.log(videojuegos);
     res.render('juegos/list',{videojuegos});
 
 });
 
 router.get('/allgames',isLoggedIn, async(req, res)=>{
-    const videojuegos2= await pool.query('SELECT*FROM videojuegos INNER JOIN usuario ON videojuegos.idusuario = usuario.idusuario',);
+    const videojuegos2= await pool.query('SELECT*FROM videojuegos INNER JOIN usuario ON videojuegos.idusuario = usuario.idusuario where videojuegos.idestatus=2' ,);
     //console.log(videojuegos2);
     res.render('juegos/allgames',{videojuegos2});
 

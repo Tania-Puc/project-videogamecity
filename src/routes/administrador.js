@@ -16,7 +16,7 @@ router.get('/admin', (req,res)=>{
 
 //mostrar tabla de juegos 
 router.get('/aprobarjuegos',isLoggedIn, async(req, res)=>{
-    const videojuegos3= await pool.query('SELECT*FROM videojuegos INNER JOIN usuario ON videojuegos.idusuario = usuario.idusuario',);
+    const videojuegos3= await pool.query('SELECT*FROM videojuegos INNER JOIN usuario ON videojuegos.idusuario = usuario.idusuario where videojuegos.idestatus=1',);
     res.render('admin/aprobar',{videojuegos3});    
 });
 
