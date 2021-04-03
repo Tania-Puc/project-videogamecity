@@ -16,7 +16,7 @@ router.get('/admin', (req,res)=>{
 
 //mostrar tabla de juegos 
 router.get('/aprobarjuegos',isLoggedIn, async(req, res)=>{
-    const videojuegos3= await pool.query('SELECT*FROM videojuegos INNER JOIN usuario ON videojuegos.idusuario = usuario.idusuario where videojuegos.idestatus=1',);
+    const videojuegos3= await pool.query('SELECT idjuego,idestatus,titulo, descripcion, imagen, puntos,usuario.nombre, CONVERT_TZ( create_at, "Africa/Timbuktu","America/Mexico_City" )as create_at FROM videojuegos INNER JOIN usuario ON videojuegos.idusuario = usuario.idusuario where videojuegos.idestatus=1',);
     res.render('admin/aprobar',{videojuegos3});    
 });
 
@@ -24,7 +24,7 @@ router.get('/aprobarjuegos',isLoggedIn, async(req, res)=>{
 router.get('/deletejuegos/:idjuego',isLoggedIn, async(req, res)=>{
     const {idjuego}=req.params;
     await pool.query('DELETE FROM `videojuegos` WHERE `videojuegos`.`idjuego` = ? ',[idjuego]);
-    req.flash('correcto','ELIMINADO CORRECTAMENTE')
+    req.flash('correcto','EL VIDEOJUEGO HA SIDO ELIMINADO')
     res.redirect('/admin/aprobarjuegos');
 });
 
@@ -48,7 +48,7 @@ router.post('/aprobar/:idjuego',isLoggedIn, async (req,res)=>{
     };
     console.log(juegoedit);
     await pool.query('update videojuegos set ? where idjuego= ?' ,[juegoedit,idjuego]);
-    req.flash('correcto','EDITADO CORRECTAMENTE')
+    req.flash('correcto','EL VIDEOJUEGO HA SIDO APROBADO')
     res.redirect('/admin/aprobarjuegos');
 });
 

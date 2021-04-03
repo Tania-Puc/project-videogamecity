@@ -46,16 +46,17 @@ router.post('/add',isLoggedIn, async (req, res)=>{
        idjuego:juegoexis.idjuego
 
    }
+
    await pool.query('update videojuegos set ? where titulo= ?' ,[updatejuego,titulo]);
 
 
-    req.flash('correcto','VIDEOJUEGO ha sido recomendado');
+    req.flash('correcto','EL VIDEOJUEGO YA HA SIDO REGISTRADO SE SUMARA TU RECOMENDACIÓN');
         res.redirect('/juegos')
 
     
     }else{
         await pool.query('INSERT INTO videojuegos set ?',[newjuego]);
-        req.flash('correcto','VIDEOJUEGO AGREGADO CORRECTAMENTE');
+        req.flash('correcto','VIDEOJUEGO AGREGADO CORRECTAMENTE, SE HA ENVIADO PARA SU REVISIÓN ');
         res.redirect('/juegos')
 
     
@@ -66,14 +67,14 @@ router.post('/add',isLoggedIn, async (req, res)=>{
 });
 //LISTAR LOS todos los VIDEOJUEGOS AGREGADOS
 router.get('/',isLoggedIn, async(req, res)=>{
-    const videojuegos= await pool.query('SELECT*FROM videojuegos INNER JOIN usuario ON videojuegos.idusuario = usuario.idusuario where usuario.idusuario=? and videojuegos.idestatus=2',[req.user.idusuario]);
+    const videojuegos= await pool.query('SELECT idjuego,idestatus,titulo, descripcion, imagen, puntos,usuario.nombre, CONVERT_TZ( create_at, "Africa/Timbuktu","America/Mexico_City" )as create_at FROM videojuegos INNER JOIN usuario ON videojuegos.idusuario = usuario.idusuario where usuario.idusuario=? and videojuegos.idestatus=2',[req.user.idusuario]);
     //console.log(videojuegos);
     res.render('juegos/list',{videojuegos});
 
 });
 
 router.get('/allgames',isLoggedIn, async(req, res)=>{
-    const videojuegos2= await pool.query('SELECT*FROM videojuegos INNER JOIN usuario ON videojuegos.idusuario = usuario.idusuario where videojuegos.idestatus=2' ,);
+    const videojuegos2= await pool.query('SELECT idjuego,idestatus,titulo, descripcion, imagen, puntos,usuario.nombre, CONVERT_TZ( create_at, "Africa/Timbuktu","America/Mexico_City" )as create_at FROM videojuegos INNER JOIN usuario ON videojuegos.idusuario = usuario.idusuario where videojuegos.idestatus=2' ,);
     //console.log(videojuegos2);
     res.render('juegos/allgames',{videojuegos2});
 
