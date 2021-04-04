@@ -1,53 +1,56 @@
-    {{>navigation}}
-    {{>mensajes}}
+
+
+{{>navigation}}
+{{>mensajes}}
 <div class="container p-5">
-<div class="album py-5 bg-light">
+  <div class="album py-5 bg-light">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 ">
-    {{#each videojuegos}}
+        {{#each videojuegos}}
 
         <div class="col">
           <div class="card shadow-sm mx-auto ">
-          <img src={{imagen}} class="bd-placeholder-img card-img-top " width="100%" height="240" alt="Imagen videojuego">
+            <img src={{imagen}} class="bd-placeholder-img card-img-top " width="100%" height="240"
+              alt="Imagen videojuego">
 
             <div class="card-body ">
-               <h4 class="card-title text-uppercase">{{titulo}}</h4> 
+              <h4 class="card-title text-uppercase">{{titulo}}</h4>
               <p class="card-text">{{descripcion}}</p>
-              <P>Recomendado por:  <small class="text" style="color:#0D255E; font-weight:initial;" >{{nombre}}</small></P> 
-              <i class="fab fa-gratipay"> <small class="text" style="color:#0D255E ; font-weight: intial;">{{puntos}}</small></i>
+              <P>Recomendado por: <small class="text" style="color:#0D255E; font-weight:initial;">{{nombre}}</small></P>
+              <i class="fab fa-gratipay"> <small class="text"
+                  style="color:#0D255E ; font-weight: intial;">{{puntos}}</small></i>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                    <a href="/juegos/edit/{{idjuego}}" class="btn btn-sm btn-outline-secondary">Editar</a>
-                    
-                    <a href="/juegos/delete/{{idjuego}}" class="btn btn-sm btn-outline-secondary">Eliminar</a>
-            
+                  <a href="/juegos/edit/{{idjuego}}" class="btn btn-sm btn-outline-secondary">Editar</a>
+
+                  <a href="/juegos/delete/{{idjuego}}" class="btn btn-sm btn-outline-secondary">Eliminar</a>
+
                 </div>
 
-              <i class="fas fa-clock"><small class="text"  style="color:#0D255E ; font-weight: intial;" > {{timeago create_at}}</small></i> 
+                <i class="fas fa-clock"><small class="text" style="color:#0D255E ; font-weight: intial;"> {{timeago
+                    create_at}}</small></i>
 
               </div>
-              
+
             </div>
-            
+
           </div>
-          
+
         </div>
-        
+
         {{else}}
-      <div class="col-md-4 mx-auto">
+        <div class="col-md-4 mx-auto">
           <div class="card card-body text-center">
-              <p>No hay videojuegos recomendados</p>
-              <a href="/juegos/add">Recomienda uno </a>
+            <p>No hay videojuegos recomendados</p>
+            <a href="/juegos/add">Recomienda uno </a>
           </div>
-      </div>
-      
-     {{/each}}
-  
-          
+        </div>
+
+        {{/each}}
+
+
       </div>
 
     </div>
-    
+
   </div>
-
-

@@ -1,27 +1,29 @@
-    {{>navigation}}
-    {{>mensajes}}
+{{>navigation}}
+{{>mensajes}}
 <div class="container p-4">
   <div class="row">
     <div class="col-md-4 mx-auto">
-      
-   <form action="/singup" method="POST">
-       <img class="img-fluid mx-auto img-thumbnail" src="https://upload.wikimedia.org/wikipedia/commons/5/5c/VIDEOJUEGOS.png" />
-     <h2 style="text-align: center;"><i class="fas fa-ghost"></i> VIDEOGAME CITY</h2>
-     <h1 class="h3 mb-3 fw-normal" style="text-align: center;">Crear Usuario</h1>
 
-    <label for="inputname" class="visually-hidden">Nombre</label>
-    <input type="text" id="inputname"  name="nombre"class="form-control" placeholder="Juan Perez" required="" autofocus>
-    <br>
-    <label for="inputcorreo" class="visually-hidden">Correo</label>
-    <input type="email" id="inputcorreo" name="correo" class="form-control" placeholder="Correo" required="">
-    <br>
-      <label for="inputcontrasena" class="visually-hidden">Contraseña</label>
-    <input type="password" id="inputcontrasena" name="contrasena" class="form-control" placeholder="Contraseña" required="">
-    <br>
-    <button class="w-100 btn btn-lg btn-primary " style="background-color: #0D255E;">Crear</button>
+      <form action="/singup" method="POST">
+        <img class="img-fluid mx-auto img-thumbnail"
+          src="https://upload.wikimedia.org/wikipedia/commons/5/5c/VIDEOJUEGOS.png" />
+        <h2 style="text-align: center;"><i class="fas fa-ghost"></i> VIDEOGAME CITY</h2>
+        <h1 class="h3 mb-3 fw-normal" style="text-align: center;">Crear Usuario</h1>
 
-  </form>
+        <label for="inputname" class="visually-hidden">Nombre</label>
+        <input type="text" id="inputname" name="nombre" class="form-control" placeholder="Juan Perez" required=""
+          autofocus>
+        <br>
+        <label for="inputcorreo" class="visually-hidden">Correo</label>
+        <input type="email" id="inputcorreo" name="correo" class="form-control" placeholder="Correo" required="">
+        <br>
+        <label for="inputcontrasena" class="visually-hidden">Contraseña</label>
+        <input type="password" id="inputcontrasena" name="contrasena" class="form-control" placeholder="Contraseña"
+          required="">
+        <br>
+        <button class="w-100 btn btn-lg btn-primary " style="background-color: #0D255E;">Crear</button>
+
+      </form>
     </div>
   </div>
-</div> 
-
+</div>
