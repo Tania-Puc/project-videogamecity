@@ -2,9 +2,18 @@
 {{>navigation}}
 
 <div class="container p-5">
-
+   <form class="form-search content-search navbar-form" action="/juegos/allgames" method="post">
+    <div class="input-group">
+        <input placeholder="Buscar" name="query" class="form-control form-text" type="text" size="15" maxlength="128" />
+        <span class="input-group-btn">
+            <button type="submit" class="btn btn-primary"><span class="icon glyphicon glyphicon-search" aria-hidden="true"></span></button>
+        </span>
+    </div>
+</form>
   <div class="album py-5 bg-light">
+    
     <div class="container">
+
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 ">
         {{#each videojuegos2}}
 

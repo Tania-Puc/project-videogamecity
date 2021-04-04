@@ -80,12 +80,18 @@ router.get('/allgames', isLoggedIn, async (req, res) => {
     res.render('juegos/allgames', { videojuegos2 });
 
 });
-
+// BUSCAR Y QUE RENDERICE EN /ALLGAMES usando la misma plantilla
 router.post('/allgames', isLoggedIn, async (req, res) => {
-    const videojuegos2 = await pool.query('SELECT idjuego,idestatus,titulo, descripcion, imagen, puntos,usuario.nombre, CONVERT_TZ( create_at, "Africa/Timbuktu","America/Mexico_City" )as create_at FROM videojuegos INNER JOIN usuario ON videojuegos.idusuario = usuario.idusuario where videojuegos.idestatus=2',);
-    //console.log(videojuegos2);
+    const { query } = req.body;
+    console.log(query);
+    const videojuegos2 = await pool.query(
+        'SELECT idjuego,idestatus,titulo, descripcion, imagen, puntos,usuario.nombre, CONVERT_TZ( create_at, "Africa/Timbuktu","America/Mexico_City" ) \
+        AS create_at  \
+        FROM videojuegos \
+        INNER JOIN usuario \
+        ON videojuegos.idusuario = usuario.idusuario \
+        WHERE videojuegos.idestatus=2 AND videojuegos.titulo LIKE "%'+query+'%"');
     res.render('juegos/allgames', { videojuegos2 });
-
 });
 
 
