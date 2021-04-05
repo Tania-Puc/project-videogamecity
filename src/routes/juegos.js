@@ -31,7 +31,7 @@ router.post('/add', isLoggedIn, async (req, res) => {
     };
     var titulo1 = newjuego.titulo;
     // titulo1 = titulo1.toUCase();
-
+   
     const juegos = await pool.query(
         'SELECT idjuego, titulo, descripcion, imagen, puntos, create_at, idestatus, idusuario \
         FROM videogamecity.videojuegos \
@@ -51,16 +51,24 @@ router.post('/add', isLoggedIn, async (req, res) => {
 
         }
         await pool.query('update videojuegos set ? where titulo= ?', [updatejuego, titulo]);
-
-
         req.flash('correcto', 'EL VIDEOJUEGO YA HA SIDO REGISTRADO SE SUMARA TU RECOMENDACIÓN');
         res.redirect('/juegos')
     } else {
-        await pool.query('INSERT INTO videojuegos set ?', [newjuego]);
-        req.flash('correcto', 'VIDEOJUEGO AGREGADO CORRECTAMENTE, SE HA ENVIADO PARA SU REVISIÓN ');
-        res.redirect('/juegos')
+        
+        if(titulo==""||descripcion==""||imagen=="")
+        {
+            req.flash('error', 'Vrifique los campos vacios');
+            res.redirect('/juegos/add')
 
 
+        }else {
+            await pool.query('INSERT INTO videojuegos set ?', [newjuego]);
+            req.flash('correcto', 'VIDEOJUEGO AGREGADO CORRECTAMENTE, SE HA ENVIADO PARA SU REVISIÓN ');
+            res.redirect('/juegos')
+    
+
+        }
+            
     }
 
 

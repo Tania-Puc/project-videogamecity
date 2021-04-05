@@ -41,7 +41,7 @@ router.get('/profile', isLoggedIn, (req,res)=>{
 
 router.get('/logout',(req,res)=>{
     req.logOut();//Metodo de passaport para limpiar (cerrar) la sesión del usuario
-    res.redirect('/signin');
+    res.redirect('/');
 
 });
 

@@ -2,15 +2,12 @@
 {{>navigation}}
 
 <div class="container p-5">
-   <form class="form-search content-search navbar-form" action="/juegos/allgames" method="post">
-    <div class="input-group">
-        <input placeholder="Buscar" name="query" class="form-control form-text" type="text" size="15" maxlength="128" />
-        <span class="input-group-btn">
-            <button type="submit" class="btn btn-primary"><span class="icon glyphicon glyphicon-search" aria-hidden="true"></span></button>
-        </span>
-    </div>
-</form>
-  <div class="album py-5 bg-light">
+
+ <form class="d-flex" action="/juegos/allgames" method="post">
+        <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline" style="background-color: #0D255E; border-radius: 12px " type="submit"><i class="fas fa-search" style="color: white;"></i></button>
+      </form>
+  <div class="album p-4 bg-light">
     
     <div class="container">
 
