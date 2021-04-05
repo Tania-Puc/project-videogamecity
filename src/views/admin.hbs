@@ -1,20 +1,23 @@
-    {{>navigationadmin}}
-    
-    {{>mensajes}}
+
+{{>navigationadmin}}
+
+{{>mensajes}}
 
 <div class="container p-4">
-      <div class="col-md-4 mx-auto">
-        <img class="img-fluid mx-auto  img-thumbnail" src="https://www.semana.com/resizer/6xN51vpM79K7UVc3PAb-Ytoqun8=/1200x675/filters:format(jpg):quality(70)//cloudfront-us-east-1.images.arcpublishing.com/semana/DD5X25JSKJEZ5JDYZAHJH4S27M.jpg" />
+  <div class="col-md-4 mx-auto">
+    <img class="img-fluid mx-auto  img-thumbnail"
+      src="https://www.semana.com/resizer/6xN51vpM79K7UVc3PAb-Ytoqun8=/1200x675/filters:format(jpg):quality(70)//cloudfront-us-east-1.images.arcpublishing.com/semana/DD5X25JSKJEZ5JDYZAHJH4S27M.jpg" />
 
-     </div>
-   <div class="jumbotron" style="text-align: center;">
-  <h1 class="display-4">Bienvenid@! </h1>
-   <h3>{{user.nombre}}</h3>
-   <h4>{{user.correo}}</h4>
-   <br>
-   <p class="lead">
-    <a class="btn btn-primary btn-lg" href="/admin/aprobarjuegos" role="button" style="background-color: #0D255E;">Aprobar juegos</a>
-  </p>
-</div>
+  </div>
+  <div class="jumbotron" style="text-align: center;">
+    <h1 class="display-4">Bienvenid@! </h1>
+    <h3>{{user.nombre}}</h3>
+    <h4>{{user.correo}}</h4>
+    <br>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="/admin/aprobarjuegos" role="button"
+        style="background-color: #0D255E;">Aprobar juegos</a>
+    </p>
+  </div>
 
 </div>

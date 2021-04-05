@@ -1,39 +1,46 @@
-    {{>navigation}}
-    {{>mensajes}}
+
+
+{{>navigation}}
+{{>mensajes}}
 <div class="container p-4">
-    <div class="row"> 
-        
+    <div class="row">
+
         <div class="col-md-5 mx-auto">
             <div class="card ">
                 <div class="card-body">
-                    <h4  class="card-title" style="text-align: center;">Editar</h4>
-                  <form action="/juegos/edit/{{videojuegos.idjuego}}" method="POST">
+                    <h4 class="card-title" style="text-align: center;">Editar</h4>
+                    <form action="/juegos/edit/{{videojuegos.idjuego}}" method="POST">
 
-                        <input type="number" style="visibility: hidden;"name="idusuario" placeholder="idusuario" value="{{videojuegos.idusuario}}">
-                        <input type="number" style="visibility: hidden;" name="idestatus"   placeholder="idusuario" value="{{videojuegos.idestatus}}" >
+                        <input type="number" style="visibility: hidden;" name="idusuario" placeholder="idusuario"
+                            value="{{videojuegos.idusuario}}">
+                        <input type="number" style="visibility: hidden;" name="idestatus" placeholder="idusuario"
+                            value="{{videojuegos.idestatus}}">
 
-                    <div class="form-grup">
-                        <input type="text" value="{{videojuegos.titulo}}"class="form-control" name="titulo" placeholder="Titulo" autofocus>
-                    </div>
-                    <br>
-                   <div class="form-grup">
-                        <textarea name="descripcion"  rows="2" class="form-control" placeholder="Descripción">{{videojuegos.descripcion}}</textarea>
-                    </div>
-                    <br>
-                    <div class="form-grup">
-                        <input type="url" value="{{videojuegos.imagen}}" name="imagen" class="form-control " placeholder="url de imagen">
+                        <div class="form-grup">
+                            <input type="text" value="{{videojuegos.titulo}}" class="form-control" name="titulo"
+                                placeholder="Titulo" autofocus>
+                        </div>
+                        <br>
+                        <div class="form-grup">
+                            <textarea name="descripcion" rows="2" class="form-control"
+                                placeholder="Descripción">{{videojuegos.descripcion}}</textarea>
+                        </div>
+                        <br>
+                        <div class="form-grup">
+                            <input type="url" value="{{videojuegos.imagen}}" name="imagen" class="form-control "
+                                placeholder="url de imagen">
 
-                    </div>
+                        </div>
 
-                     <br>           
-                    <div class="form-grup">
-                        <button class="btn btn-primary btn-sm" style="background-color: #0D255E;">Guardar</button>
-                    </div>
-                    <br>
+                        <br>
+                        <div class="form-grup">
+                            <button class="btn btn-primary btn-sm" style="background-color: #0D255E;">Guardar</button>
+                        </div>
+                        <br>
                     </form>
                 </div>
             </div>
 
-        </div>       
+        </div>
     </div>
 </div>
