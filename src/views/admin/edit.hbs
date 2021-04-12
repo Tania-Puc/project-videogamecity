@@ -1,9 +1,52 @@
-
-
-{{>navigationadmin}}
-{{>mensajes}}
+    {{>navigationadmin}}
 
 <div class="container p-4">
+{{>mensajes}}
+
+    <div class="row">
+
+        <div class="col-md-6 mx-auto">
+            <div class="card " style="border-radius: 12px ">
+                <div class="card-header" style="text-align: center;">
+                    <h5>Aprobar Videojuego </h5>
+                </div>
+                <div class="card-body">
+
+                    <form action="/admin/aprobar/{{videojuegos.idjuego}}" method="POST">
+                      <input type="number" style="visibility: hidden;" name="idusuario" placeholder="idusuario"
+            value="{{videojuegos.idusuario}}">
+                        <input type="number" style="visibility: hidden;" name="idestatus" placeholder="idusuario"
+                            value="2">
+                        <div class="form-grup">
+                            <input type="text" value="{{videojuegos.titulo}}" class="form-control" name="titulo"
+                                placeholder="Titulo" readonly="readonly"  autofocus >
+                        </div>
+                        <br>
+                        <div class="form-grup">
+                                <textarea name="descripcion" rows="2" class="form-control" placeholder="Descripción" readonly="readonly" >{{videojuegos.descripcion}} </textarea>
+
+                        </div>
+                        <br>
+                        <div class="form-grup">
+                            <img class="bd-placeholder-img card-img-top " width="100%" height="150" alt="Imagen videojuego" src="{{videojuegos.imagen}}" />
+                        </div>
+            <input type="url" value="{{videojuegos.imagen}}" name="imagen"placeholder="url de imagen"   style="visibility: hidden;"></div>
+
+                        
+                        <div class="form-grup " style="text-align: center;">
+                            <button class="btn btn-outline-secondary btn-rounded"
+                                style=" color:white; background-color: #0D255E; border-radius: 12px ">
+                                <i class="fas fa-check"></i>  Aprobar</button>
+                        </div>
+                        <br>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--<div class="container p-4">
     <form action="/admin/aprobar/{{videojuegos.idjuego}}" method="POST">
 
         <input type="number" style="visibility: hidden;" name="idusuario" placeholder="idusuario"
@@ -11,24 +54,18 @@
         <input type="number" style="visibility: hidden;" name="idestatus" placeholder="idusuario" value="2">
 
         <div class="form-grup">
-            <input type="text" value="{{videojuegos.titulo}}" class="form-control" name="titulo" placeholder="Titulo"
-                autofocus>
+            <input type="text" value="{{videojuegos.titulo}}" class="form-control" name="titulo" placeholder="Titulo"  disabled autofocus>
         </div>
         <br>
         <div class="form-grup">
-            <textarea name="descripcion" rows="2" class="form-control"
-                placeholder="Descripción">{{videojuegos.descripcion}} </textarea>
+            <textarea name="descripcion" rows="2" class="form-control" placeholder="Descripción"  disabled>{{videojuegos.descripcion}} </textarea>
         </div>
         <br>
         <div class="form-grup">
 
-            <img class="bd-placeholder-img card-img-top " width="100%" height="240" alt="Imagen videojuego"
-                src="{{videojuegos.imagen}}" />
+            <img class="bd-placeholder-img card-img-top " width="100%" height="240" alt="Imagen videojuego" src="{{videojuegos.imagen}}" />
 
-            <input type="url" value="{{videojuegos.imagen}}" name="imagen" class="form-control "
-                placeholder="url de imagen">
-
-        </div>
+            <input type="url" value="{{videojuegos.imagen}}" name="imagen" class="form-control "placeholder="url de imagen"   style="visibility: hidden;"></div>
 
         <br>
         <div class="form-grup">
@@ -38,4 +75,4 @@
     </form>
 </div>
 
-</div>
+</div>-->

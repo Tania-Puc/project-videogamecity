@@ -39,7 +39,7 @@ router.post('/add', isLoggedIn, async (req, res) => {
         [titulo1]);
 
     const juegoexis = juegos[0];
-    if (juegos.length == 1) {
+    if (juegos.length >0) {
 
         const titulo = juegoexis.titulo;
         const updatejuego = {
@@ -83,7 +83,7 @@ router.get('/', isLoggedIn, async (req, res) => {
 });
 
 router.get('/allgames', isLoggedIn, async (req, res) => {
-    const videojuegos2 = await pool.query('SELECT idjuego,idestatus,titulo, descripcion, imagen, puntos,usuario.nombre, CONVERT_TZ( create_at, "Africa/Timbuktu","America/Mexico_City" )as create_at FROM videojuegos INNER JOIN usuario ON videojuegos.idusuario = usuario.idusuario where videojuegos.idestatus=2',);
+    const videojuegos2 = await pool.query('SELECT idjuego,idestatus,titulo, descripcion, imagen, puntos,usuario.nombre, CONVERT_TZ( create_at, "Africa/Timbuktu","America/Mexico_City" )as create_at FROM videojuegos INNER JOIN usuario ON videojuegos.idusuario = usuario.idusuario where videojuegos.idestatus=2  ',);
     //console.log(videojuegos2);
     res.render('juegos/allgames', { videojuegos2 });
 

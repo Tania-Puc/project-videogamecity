@@ -31,7 +31,11 @@ router.get('/deletejuegos/:idjuego',isLoggedIn, async(req, res)=>{
 
 router.get('/aprobar/:idjuego',isLoggedIn,async(req,res)=>{
     const {idjuego}=req.params;
-    const videojuegos=await pool.query('SELECT * FROM `videojuegos` WHERE idjuego=?',[idjuego]); 
+    const videojuegos=await pool.query('SELECT idjuego,idestatus,titulo, descripcion, imagen, puntos,usuario.idusuario,usuario.nombre, CONVERT_TZ( create_at, "Africa/Timbuktu","America/Mexico_City" ) \
+    AS create_at  \
+    FROM videojuegos \
+    INNER JOIN usuario \
+    ON videojuegos.idusuario = usuario.idusuario \ WHERE idjuego=?',[idjuego]); 
     console.log(videojuegos[0]);
     res.render('admin/edit',{videojuegos:videojuegos[0]});
 });

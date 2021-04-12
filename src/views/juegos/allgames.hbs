@@ -2,16 +2,22 @@
 {{>navigation}}
 
 <div class="container p-5">
+  <div class="card-header" style="text-align: center;  border-radius: 12px  ">
+    <h4>Buscar Videojuegos <i class="fas fa-gamepad"></i> </h4>
+  </div>
+  <div class="card-body">
+    <form class="d-flex" action="/juegos/allgames" method="post">
+      <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline" style="background-color: #0D255E; border-radius: 12px " type="submit"><i
+          class="fas fa-search" style="color: white;"></i></button>
+    </form>
+  </div>
 
- <form class="d-flex" action="/juegos/allgames" method="post">
-        <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline" style="background-color: #0D255E; border-radius: 12px " type="submit"><i class="fas fa-search" style="color: white;"></i></button>
-      </form>
   <div class="album p-4 bg-light">
-    
+
     <div class="container">
 
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 ">
+      <div class="row row-cols-3 row-cols-sm-3 row-cols-md-3 g-3 " style="border-radius: 14px">
         {{#each videojuegos2}}
 
         <div class="col">
