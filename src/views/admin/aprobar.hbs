@@ -1,13 +1,15 @@
 
 {{>navigationadmin}}
-    {{>mensajes}}
 
 <div class="container p-4">
+  {{>mensajes}}
 
- <div class="card-header" style="text-align: center;  border-radius: 12px ">
-                    <h4>Aprobar videojuegos <i class="fas fa-gamepad"></i> </h4  > 
-                </div>
-<br>
+  <div class="card-header" style="text-align: center;  border-radius: 12px ">
+    <h4>Aprobar videojuegos <i class="fas fa-gamepad"></i> </h4>
+  </div>
+  <br>
+  {{#each videojuegos3}}
+
   <table class="table table-hover table-dark table-responsive ">
     <thead>
       <tr>
@@ -21,19 +23,23 @@
       </tr>
     </thead>
     <tbody>
-      {{#each videojuegos3}}
       <tr>
         <th scope="row">{{idjuego}}</th>
-        <td scope="row" >{{nombre}}</td>
+        <td scope="row">{{nombre}}</td>
         <td>{{titulo}}</td>
         <td>{{descripcion}}</td>
         <td>{{timeago create_at}}</td>
         <td>{{puntos}}</td>
-        <td><a href="/admin/aprobar/{{idjuego}}" class="btn btn-success"><i class="fas fa-check"></i> </a> <a class="btn btn-danger" href="/admin/deletejuegos/{{idjuego}}"><i class="fas fa-trash"></i></a>
+        <td><a href="/admin/aprobar/{{idjuego}}" class="btn btn-success"><i class="fas fa-check"></i> </a> <a
+            class="btn btn-danger" href="/admin/deletejuegos/{{idjuego}}"><i class="fas fa-trash"></i></a>
         </td>
       </tr>
       {{else}}
-
+      <div class="col-md-4 mx-auto">
+        <div class="card card-body text-center">
+          <p>No hay videojuegos por aprobar </p>
+        </div>
+      </div>
       {{/each}}
     </tbody>
   </table>

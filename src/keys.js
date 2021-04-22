@@ -1,4 +1,5 @@
 module.exports={
+    
     database: {
         host:'mysql.db4free.net',
         user:'videogamecity',
@@ -6,8 +7,9 @@ module.exports={
         database:'videogamecity'
     }
     
+    /*
     //local
-    /*database: {
+    database: {
         host:'localhost',
         user:'root',
         password:'',
